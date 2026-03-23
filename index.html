@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anirban Pal — Resume</title>
+  <style>
+    /* ─── Midnight Saffron Theme ───────────────────────────────── */
+    :root {
+      --bg:        #0F1117;
+      --surface:   #1A1F2B;
+      --primary:   #E6A93D;
+      --text:      #F5F7FA;
+      --muted:     #A9B1BC;
+      --border:    #2C3443;
+      --success:   #4CAF50;
+      --info:      #64B5F6;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                   'Helvetica Neue', Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── Layout ────────────────────────────────────────────────── */
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ─── Header ────────────────────────────────────────────────── */
+    .header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.02em;
+    }
+
+    .header .contact {
+      margin-top: 0.35rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .header .summary {
+      margin-top: 1rem;
+      color: var(--text);
+      font-size: 0.95rem;
+      max-width: 780px;
+      line-height: 1.75;
+    }
+
+    /* ─── Section titles ────────────────────────────────────────── */
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ─── Job cards ─────────────────────────────────────────────── */
+    .job {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .job-left {}
+
+    .job-company {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .job-title {
+      font-size: 0.9rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-top: 0.1rem;
+    }
+
+    .job-dates {
+      font-size: 0.82rem;
+      color: var(--muted);
+      white-space: nowrap;
+      margin-top: 0.15rem;
+      text-align: right;
+    }
+
+    .job ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .job ul li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .job ul li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 0.75rem;
+      top: 0.2em;
+    }
+
+    /* ─── Education cards ───────────────────────────────────────── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--primary);
+    }
+
+    .edu-school {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ─── Publications ──────────────────────────────────────────── */
+    .pub-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .pub-title {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .pub-venue {
+      font-size: 0.83rem;
+      color: var(--info);
+      margin: 0.25rem 0;
+    }
+
+    .pub-detail {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      line-height: 1.6;
+    }
+
+    /* ─── Service ───────────────────────────────────────────────── */
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.4rem;
+    }
+
+    .service-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .service-card ul li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.45rem;
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .service-card ul li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 0.72rem;
+      top: 0.22em;
+    }
+
+    .service-card .label {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .service-note {
+      margin-top: 0.75rem;
+      font-size: 0.83rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ─── Footer ────────────────────────────────────────────────── */
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--border);
+    }
+
+    /* ─── Print ─────────────────────────────────────────────────── */
+    @media print {
+      body { background: #fff; color: #111; font-size: 12px; padding: 0; }
+      .page { max-width: 100%; }
+      .job, .edu-card, .pub-card, .service-card {
+        background: #f9f9f9; border-color: #ccc;
+        break-inside: avoid;
+      }
+      :root {
+        --primary: #b07a00; --text: #111; --muted: #555;
+        --surface: #f4f4f4; --border: #ccc; --info: #2266aa;
+      }
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────────  */
+    @media (max-width: 600px) {
+      .job-header { flex-direction: column; }
+      .job-dates { text-align: left; }
+      .header h1 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Header ──────────────────────────────────────────────── -->
+  <header class="header">
+    <h1>Anirban Pal</h1>
+    <p class="contact">
+      <a href="mailto:anirbanpal.wbut@gmail.com">anirbanpal.wbut@gmail.com</a>
+    </p>
+    <p class="summary">
+      Driving enterprise modernization through the strategic architecture of agentic AI systems,
+      I bridge the gap between two decades of industry battle-testing and PhD-level Computer
+      Science research. I specialize in translating emerging theory into scalable production by
+      refactoring high-friction legacy processes into autonomous, intelligent workflows. My focus
+      is on the strategic integration of large language models, automated behavioral analytics,
+      and high-impact predictive systems. By prioritizing both data integrity and operational
+      velocity, I build the resilient infrastructure necessary for an AI-first future.
+    </p>
+  </header>
+
+  <!-- ── Work Experience ─────────────────────────────────────── -->
+  <section class="section">
+    <h2 class="section-title">Work Experience</h2>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-left">
+          <div class="job-company">Gallup, Inc.</div>
+          <div class="job-title">Data Scientist</div>
+        </div>
+        <div class="job-dates">Oct 2022 – Present</div>
+      </div>
+      <ul>
+        <li>Orchestrated an agentic AI framework for a federal research project, leveraging real-time Transformer-based NLP to quantify leadership dynamics and deploy live behavioral scoring within a simulated environment.</li>
+        <li>Architected a generative AI pipeline for global verbatim analysis, real-time translation, synthesizing NER and toxicity detection with LLM-powered thematic clustering to automate the extraction of strategic insights from unstructured survey data.</li>
+        <li>Developed a predictive model-backed tool to estimate survey question length across diverse languages and regions, enabling more efficient questionnaire design and accurate global project scoping.</li>
+        <li>Modernized World Poll legacy data infrastructure and several manual touchpoints by engineering an automated AWS-driven processing engine, accelerating global result generation by over 90% and significantly impacting profitability while ensuring data integrity at scale.</li>
+        <li>Engineering scalable agentic tools and LLM orchestration layers to eliminate process friction in legacy enterprise architectures, accelerating modernization through the rapid deployment of autonomous AI workflows.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-left">
+          <div class="job-company">VMware, Inc.</div>
+          <div class="job-title">Senior Data Product Manager</div>
+        </div>
+        <div class="job-dates">Apr 2022 – Oct 2022</div>
+      </div>
+      <ul>
+        <li>Developed a sophisticated churn and retention engine for the End User Computing (EUC) suite, using telemetry data to pinpoint friction in the customer lifecycle.</li>
+        <li>Architected a unified Power BI telemetry hub that consolidated usage data from 12+ global products. This standardized "single source of truth" reduced reporting lead times by 50% and empowered 15+ Product Managers to perform real-time cross-platform benchmarking.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-left">
+          <div class="job-company">Blue Cross Blue Shield of Nebraska</div>
+          <div class="job-title">Senior Data Analytics Engineer</div>
+        </div>
+        <div class="job-dates">Aug 2014 – Apr 2022</div>
+      </div>
+      <ul>
+        <li>Directed the enterprise-wide Power BI rollout for 200+ users, establishing a "single source of truth" for clinical and financial data that reduced manual reporting cycles by over 80%.</li>
+        <li>Developed a high-risk pregnancy identification model that enabled early clinical intervention, resulting in an estimated $1M+ in annual cost avoidance by reducing catastrophic neonatal claims.</li>
+        <li>Architected a risk-stratification framework to bracket high-risk members, increasing the efficiency of care management outreach by 25% through improved "True Positive" identification.</li>
+        <li>Automated manual research and reporting tasks, transforming months of legacy data processing into streamlined, repeatable Python and cloud-driven pipelines (Azure).</li>
+        <li>Analyzed the efficacy of "Gap in Care" outreach campaigns, leveraging predictive insights to increase HEDIS-related screening completions (e.g., Colorectal, Breast Cancer).</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-left">
+          <div class="job-company">Oriental Trading Company</div>
+          <div class="job-title">Business Intelligence and Reporting Developer</div>
+        </div>
+        <div class="job-dates">Oct 2013 – Aug 2014</div>
+      </div>
+      <ul>
+        <li>Architected enterprise-scale dashboards and KPI frameworks in Tableau, synthesizing disparate operational data into high-visibility business metrics to drive executive decision-making.</li>
+        <li>Engineered robust ETL pipelines using UNIX and Netezza, serving as a data quality lead to ensure high-fidelity reporting and seamless data warehouse integration.</li>
+        <li>Spearheaded the enterprise-wide adoption of Tableau through cross-functional technical training, transitioning manual reporting groups into self-service analytics workflows.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-left">
+          <div class="job-company">Cognizant Technology Solutions</div>
+          <div class="job-title">Software Developer</div>
+        </div>
+        <div class="job-dates">Sep 2012 – Oct 2013</div>
+      </div>
+      <ul>
+        <li>Architected end-to-end Data Warehousing (EDW) and Business Intelligence solutions, leveraging Informatica, Teradata, and Oracle to transform complex legacy data into actionable executive insights.</li>
+        <li>Engineered and optimized high-performance database objects and complex SQL queries across Sybase and SQL Server, significantly improving data retrieval speeds for mission-critical client-server applications.</li>
+        <li>Designed logical and physical data models for multi-tenant architectures, ensuring data integrity and scalability across diverse industry verticals including Hospitality and Financial Services.</li>
+        <li>Synthesized client requirements into technical roadmaps, leading the development and deployment of customized dashboards using IBM Cognos and Business Objects.</li>
+        <li>Directed project estimation and RFP technical responses for new business initiatives, while mentoring junior developers on modernizing legacy C#, Perl, and Visual Basic systems.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Education ────────────────────────────────────────────── -->
+  <section class="section">
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">PhD in Computer Science</div>
+        <div class="edu-school">AI Specialization · University of Nebraska at Omaha</div>
+        <div class="edu-school" style="margin-top:0.4rem; font-size:0.8rem;">Research Focus: Applied AI, Socio-Technical Impact of AI</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">MS in Data Science</div>
+        <div class="edu-school">Bellevue University, Bellevue, Nebraska</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">BTech in Electronics &amp; Communication</div>
+        <div class="edu-school">West Bengal University of Technology, WB, India</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Publications ─────────────────────────────────────────── -->
+  <section class="section">
+    <h2 class="section-title">Selected Publications</h2>
+    <div class="pub-card">
+      <div class="pub-title">"Understanding the role of Pax5 in development of taxane-resistant neuroendocrine like prostate cancers"</div>
+      <div class="pub-venue">Cell Death and Disease — Nature Portfolio</div>
+      <div class="pub-detail">
+        In collaboration with the University of Nebraska Medical Center (UNMC).<br />
+        Engineered a pipeline to analyze genomic sequences, contributing to high-impact biomedical research published in a top-tier peer-reviewed journal.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Professional Service ─────────────────────────────────── -->
+  <section class="section">
+    <h2 class="section-title">Professional Service &amp; Peer Review</h2>
+    <div class="service-card">
+      <ul>
+        <li>
+          <span class="label">Invited Reviewer — Conferences:</span>
+          ECIR (Information Retrieval), UMAP (User Modeling, Adoption &amp; Personalization), DG.O (Digital Government)
+        </li>
+        <li>
+          <span class="label">Invited Reviewer — Journals:</span>
+          PeerJ (Computer Science &amp; Life Sciences)
+        </li>
+        <li>
+          <span class="label">Program Committee, Track Chair — DG.O 2026:</span>
+          Track 12: Digital Government for Public Health &amp; Healthcare
+        </li>
+      </ul>
+      <p class="service-note">
+        Actively contributing to the global research community through publications and evaluating
+        cutting-edge advancements in information retrieval and adaptive AI systems.
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  &copy; Anirban Pal &mdash; Built with Midnight Saffron
+</footer>
+
+</body>
+</html>
