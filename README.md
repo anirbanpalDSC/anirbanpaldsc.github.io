@@ -1,2 +1,2 @@
-# anirbanpal.github.io
+# anirbanpaldsc.github.io
 resume
